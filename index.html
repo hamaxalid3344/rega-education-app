@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rêga Education - دابەزاندنی ئەپ</title>
+    <style>
+        /* ========== Custom Fonts ========== */
+        @font-face {
+            font-family: 'UniSIRWAN Qabas';
+            src: url('UniSIRWAN Qabas Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'UniSIRWAN Qabas';
+            src: url('UniSIRWAN Qabas Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'UniSIRWAN Qabas';
+            src: url('UniSIRWAN Qabas Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --green-dark: #1E40AF;
+            --green-mid: #2563EB;
+            --green-light: #1E40AF;
+            --green-pale: #E1F5EE;
+            --amber: #EF9F27;
+            --amber-dark: #854F0B;
+            --text-main: #1a1a1a;
+            --text-muted: #555;
+            --bg: #f7faf9;
+            --white: #fff;
+            --border: rgba(15, 110, 86, 0.12);
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        body {
+            font-family: 'UniSIRWAN Qabas', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* HERO */
+        .hero {
+            width: 100%;
+            background: linear-gradient(160deg, #1E40AF 0%, #1E40AF 55%, #2563EB 100%);
+            padding: 60px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .logo-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .logo-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            flex-shrink: 0;
+        }
+
+        .logo-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            text-align: right;
+        }
+
+        .logo-text .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .logo-text .tagline {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 4px;
+            font-weight: 300;
+        }
+
+        .hero h1 {
+            font-size: clamp(26px, 5vw, 42px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* CARD AREA */
+        .card-area {
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px;
+            margin-top: -40px;
+            margin-bottom: 40px;
+        }
+
+        /* PLATFORM CARD */
+        .platform-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            padding: 28px 28px 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 24px rgba(15, 110, 86, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .platform-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .platform-icon.android {
+            background: #E8F5E9;
+        }
+
+        .platform-icon.ios {
+            background: #E3F2FD;
+        }
+
+        .platform-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            font-weight: 400;
+        }
+
+        /* FILE INFO */
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--green-pale);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            border: 1px solid rgba(29, 158, 117, 0.15);
+        }
+
+        .file-info svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--green-dark);
+        }
+
+        .file-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--green-dark);
+            flex: 1;
+        }
+
+        .file-size {
+            font-size: 12px;
+            color: var(--green-mid);
+            background: rgba(29, 158, 117, 0.12);
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* STEPS */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--green-mid);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* DOWNLOAD BUTTON */
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--green-dark);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 17px;
+            font-weight: 700;
+            font-family: 'UniSIRWAN Qabas', system-ui, sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.18s, transform 0.1s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-download:hover {
+            background: #085041;
+        }
+
+        .btn-download:active {
+            transform: scale(0.98);
+        }
+
+        .btn-download svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* iOS tip banner */
+        .ios-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: #E3F2FD;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            border: 1px solid rgba(25, 118, 210, 0.15);
+            font-size: 13px;
+            color: #0D47A1;
+            line-height: 1.6;
+        }
+
+        .ios-tip svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            stroke: #1976D2;
+        }
+
+        /* URL box */
+        .url-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg);
+            border: 1px solid rgba(25, 118, 210, 0.2);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            direction: ltr;
+        }
+
+        .url-text {
+            flex: 1;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1565C0;
+            font-family: monospace;
+            letter-spacing: 0.3px;
+        }
+
+        .url-open {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            background: #1976D2;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .url-open:hover {
+            background: #1565C0;
+        }
+
+        /* Share icon demo */
+        .share-icon-demo {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg);
+            border: 1px solid rgba(25, 118, 210, 0.2);
+            border-radius: 8px;
+            padding: 6px 12px;
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1976D2;
+        }
+
+        /* iOS button */
+        .btn-ios {
+            background: #1976D2 !important;
+        }
+
+        .btn-ios:hover {
+            background: #1565C0 !important;
+        }
+
+        /* FEATURES */
+        .features {
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px 20px;
+        }
+
+        .features-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .feat {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            padding: 16px 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feat-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--green-pale);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feat-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--green-dark);
+        }
+
+        .feat-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: auto;
+            padding: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        footer a {
+            color: var(--green-mid);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 44px 20px 70px;
+            }
+
+            .platform-card {
+                padding: 22px 20px 20px;
+            }
+
+            .features {
+                padding: 0 16px 16px;
+            }
+
+            .card-area {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="logo-wrap">
+            <div class="logo-icon">
+                <img src="rega-logo.png" alt="Rêga Education Logo" style="width: 60px; height: 60px; border-radius: 16px;">
+            </div>
+            <div class="logo-text">
+                <div class="name">Rêga Education</div>
+                <div class="tagline">ڕێگای خوێندن</div>
+            </div>
+        </div>
+
+        <h1 style="font-weight: 500;">هەر ئێستا دایبەزێنن بۆ هەردوو سیستمی <strong style="font-weight: 600; color: #eaff00;">ئەندرۆید</strong> و <strong style="font-weight: 600; color: #eaff00;">ئایفۆن</strong></h1>
+    </div>
+<br><br>
+    <div class="card-area">
+
+        <!-- ANDROID CARD -->
+        <div class="platform-card">
+            <div class="card-header">
+                <div class="platform-icon android">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 9h10v10a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" fill="#4CAF50" opacity="0.3" />
+                        <path d="M7 9h10v3H7V9z" fill="#4CAF50" />
+                        <path d="M4 9h1v6H4V9zM19 9h1v6h-1V9z" fill="#4CAF50" />
+                        <path d="M9 19v3M15 19v3" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" />
+                        <path d="M8.5 4.5L7 3M15.5 4.5L17 3" stroke="#4CAF50" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <ellipse cx="12" cy="6.5" rx="5" ry="2.5" fill="#4CAF50" opacity="0.3" stroke="#4CAF50"
+                            stroke-width="1.5" />
+                        <circle cx="9.5" cy="7" r="0.5" fill="#fff" />
+                        <circle cx="14.5" cy="7" r="0.5" fill="#fff" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="card-title">ئەندرۆید</div>
+                    <div class="card-subtitle">Android 5.0 یان زیاتر</div>
+                </div>
+            </div>
+
+            <div class="file-info">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" />
+                    <polyline points="13 2 13 9 20 9" />
+                </svg>
+                <span class="file-name">Rega-Education.apk</span>
+                <span class="file-size">5.9 MB</span>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">فایلەکە بگرە لە فۆڵدەری <strong>Downloads</strong> و بیدامەزرێنە...</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">ئەپەکە بکەوە و چێژی فێربوون بکە!</div>
+                </div>
+            </div>
+
+            <a href="app-release.apk" download="Rega-Education.apk" class="btn-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                دابەزێنی بۆ ئەندرۆید
+            </a>
+        </div>
+
+        <!-- IOS CARD -->
+        <div class="platform-card">
+            <div class="card-header">
+                <div class="platform-icon ios">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 640 640"><path d="M494.782 340.02c-.803-81.025 66.084-119.907 69.072-121.832-37.595-54.993-96.167-62.552-117.037-63.402-49.843-5.032-97.242 29.362-122.565 29.362-25.253 0-64.277-28.607-105.604-27.85-54.32.803-104.4 31.594-132.403 80.245C29.81 334.457 71.81 479.58 126.816 558.976c26.87 38.882 58.914 82.56 100.997 81 40.512-1.594 55.843-26.244 104.848-26.244 48.993 0 62.753 26.245 105.64 25.406 43.606-.803 71.232-39.638 97.925-78.65 30.887-45.12 43.548-88.75 44.316-90.994-.969-.437-85.029-32.634-85.879-129.439l.118-.035zM414.23 102.178C436.553 75.095 451.636 37.5 447.514-.024c-32.162 1.311-71.163 21.437-94.253 48.485-20.729 24.012-38.836 62.28-33.993 99.036 35.918 2.8 72.591-18.248 94.926-45.272l.036-.047z"/></svg>
+                </div>
+                <div>
+                    <div class="card-title">ئایفۆن (iOS)</div>
+                    <div class="card-subtitle">زیادی بکە وەک ئەپ — بەبێ App Store</div>
+                </div>
+            </div>
+
+            <div class="ios-tip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                ئەم ڕێنماییانەی خوارەوە بۆ دابەزاندنی ئەپەکە بەکاربهێنە لەسەر ئایفۆنەکەت!
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">سەفاری ئایفۆنەکەت بکەرەوە <strong>Safari</strong> — پێویستە Safari بێت، Chrome
+                        ناکات</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">بڕۆ بۆ ئەم ئەدرێسە:
+                        <div class="url-box">
+                            <span class="url-text">regaedu.vercel.app</span>
+                            <a href="https://regaedu.vercel.app" target="_blank" class="url-open">بکەرەوە</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text">دوگمەی <strong>هاوبەشکردن</strong> بکە — ئەو دوگمەیە ---
+                        <div class="share-icon-demo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2.2"
+                                stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" />
+                                <polyline points="16 6 12 2 8 6" />
+                                <line x1="12" y1="2" x2="12" y2="15" />
+                            </svg>
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-text">ئەمە بدۆزەوە <strong>«Add to Home Screen»</strong> — کلیکی لێ بکە
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <div class="step-text">ناوی ئەپەکە بنووسە و <strong>«Add»</strong> بکە — ئەپەکە دەکەوێتە سەر شاشەی
+                        مۆبایلەکەت!</div>
+                </div>
+            </div>
+
+            <a href="https://regaedu.vercel.app" target="_blank" class="btn-download btn-ios">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" />
+                    <polyline points="16 6 12 2 8 6" />
+                    <line x1="12" y1="2" x2="12" y2="15" />
+                </svg>
+                کردنەوەی ئەپ بۆ ئایفۆن
+            </a>
+        </div>
+
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+        <div class="features-title">ئەم ئەپڵیکەیشنە ئەم بابەتانە لەخۆ دەگرێت وە زۆر زیاتریش:</div>
+        <div class="features-grid">
+            <div class="feat">
+                <div class="feat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                    </svg>
+                </div>
+                <div class="feat-name">هەموو پرسیارە وزاریەکان بە PDF</div>
+            </div>
+            <div class="feat">
+                <div class="feat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                </div>
+                <div class="feat-name">کویزی</div>
+            </div>
+            <div class="feat">
+                <div class="feat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polygon points="23 7 16 12 23 17 23 7" />
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                </div>
+                <div class="feat-name">ڤیدیۆی وانەکان</div>
+            </div>
+
+            <div class="feat">
+                <div class="feat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polygon points="23 7 16 12 23 17 23 7" />
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                </div>
+                <div class="feat-name">بەشی کۆمەڵگە کە دەتوانی پرسیار بکەیت و وەڵام وەربگری</div>
+            </div>
+
+            <div class="feat">
+                <div class="feat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                </div>
+                <div class="feat-name">بەشی خوێندنەکەت کە پێک دێت لە بەشی زانستی و وێژەیی</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://regaedu.vercel.app" target="_blank">&nbsp;·&nbsp; Rêga Education © 2026</a>
+    </footer>
+
+</body>
+
+</html>
